@@ -1,6 +1,7 @@
 version: 0.2
 runson: linux
-framework: generic
+framework:
+  name: generic
 globalTimeout: 30
 
 matrix:
