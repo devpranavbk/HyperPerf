@@ -33,7 +33,3 @@ task:
     # --- Post ---
     - echo "✅ Test completed. Report below:"
     - cat artillery_report.json
-
-post:
-  - artifacts:
-      - artillery_report.json
