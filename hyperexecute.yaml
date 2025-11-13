@@ -1,8 +1,5 @@
 version: 0.2
 runson: linux
-framework:
-  name: playwright
-  language: python
 globalTimeout: 30
 
 matrix:
