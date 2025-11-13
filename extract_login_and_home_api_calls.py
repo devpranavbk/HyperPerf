@@ -1,10 +1,17 @@
 import json
 from playwright.sync_api import sync_playwright
+import os
+
 
 # CONFIGURABLE SECTION
-SITE_URL = "https://demoapp-5owbzfpse-dev-pranavs-projects.vercel.app/"
-USERNAME = "admin"
-PASSWORD = "password"
+# SITE_URL = "https://demoapp-5owbzfpse-dev-pranavs-projects.vercel.app/"
+# USERNAME = "admin"
+# PASSWORD = "password"
+SITE_URL = os.getenv("SITE_URL", "https://demoapp-5owbzfpse-dev-pranavs-projects.vercel.app/")
+USERNAME = os.getenv("USERNAME", "admin")
+PASSWORD = os.getenv("PASSWORD", "password")
+
+
 USERNAME_SELECTOR = 'input[placeholder="Username"]'
 PASSWORD_SELECTOR = 'input[placeholder="Password"]'
 LOGIN_BUTTON_SELECTOR = 'button[type="submit"], button:has-text("Login")'

@@ -7,6 +7,10 @@ matrix:
 
 task:
     name: artillery-load-test
+    env:
+        SITE_URL: "https://demoapp-5owbzfpse-dev-pranavs-projects.vercel.app/"
+        USERNAME: "admin"
+        PASSWORD: "password"
     commands:
         # --- Setup ---
         - sudo apt-get update
@@ -15,6 +19,8 @@ task:
         # --- Pre ---
         - pip install --no-cache-dir -r requirements.txt
         - npm install -g artillery
+        - pip install playwright
+        - playwright install chromium
 
         # --- Run ---
         - echo "✅ Extracting APIs..."
