@@ -1,5 +1,7 @@
 version: 0.2
 runson: linux
+framework:
+  name: ""
 globalTimeout: 30
 
 matrix:
