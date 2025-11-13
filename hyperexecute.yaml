@@ -3,37 +3,37 @@ runson: linux
 globalTimeout: 30
 
 matrix:
-    os: [linux]
+  os: [linux]
 
 task:
-    name: artillery-load-test
-    env:
-        SITE_URL: "https://demoapp-5owbzfpse-dev-pranavs-projects.vercel.app/"
-        USERNAME: "admin"
-        PASSWORD: "password"
-    commands:
-        # --- Setup ---
-        - sudo apt-get update
-        - sudo apt-get install -y python3 python3-pip nodejs npm
+  name: artillery-load-test
+  env:
+    SITE_URL: "https://demoapp-5owbzfpse-dev-pranavs-projects.vercel.app/"
+    USERNAME: "admin"
+    PASSWORD: "password"
+  commands:
+    # --- Setup ---
+    - sudo apt-get update
+    - sudo apt-get install -y python3 python3-pip nodejs npm
 
-        # --- Pre ---
-        - pip install --no-cache-dir -r requirements.txt
-        - npm install -g artillery
-        - pip install playwright
-        - playwright install chromium
+    # --- Pre ---
+    - pip install --no-cache-dir -r requirements.txt
+    - npm install -g artillery
+    - pip install playwright
+    - playwright install chromium
 
-        # --- Run ---
-        - echo "✅ Extracting APIs..."
-        - python extract_login_and_home_api_calls.py
-        - echo "✅ Generating Artillery script..."
-        - python generate_artillery_yaml.py api_calls_login_and_home.json artillery.yml
-        - echo "✅ Running Artillery load test..."
-        - artillery run artillery.yml -o artillery_report.json
+    # --- Run ---
+    - echo "✅ Extracting APIs..."
+    - python extract_login_and_home_api_calls.py
+    - echo "✅ Generating Artillery script..."
+    - python generate_artillery_yaml.py api_calls_login_and_home.json artillery.yml
+    - echo "✅ Running Artillery load test..."
+    - artillery run artillery.yml -o artillery_report.json
 
-        # --- Post ---
-        - echo "✅ Test completed. Report below:"
-        - cat artillery_report.json
+    # --- Post ---
+    - echo "✅ Test completed. Report below:"
+    - cat artillery_report.json
 
 post:
-    artifacts:
-        - artillery_report.json
+  artifacts:
+    - artillery_report.json
