@@ -1,0 +1,22 @@
+version: 0.2
+
+env:
+  LAMBDATEST_USERNAME: ${{LT_USERNAME}}
+  LAMBDATEST_ACCESS_KEY: ${{LT_ACCESS_KEY}}
+
+pre:
+  # Install Python and Node.js dependencies
+  - pip install -r requirements.txt
+  - npm install -g artillery
+
+run:
+  # Extract APIs
+  - python extract_login_and_home_api_calls.py
+  # Generate Artillery script
+  - python generate_artillery_yaml.py api_calls_login_and_home.json artillery.yml
+  # Run Artillery test and export report
+  - artillery run artillery.yml -o artillery_report.json
+
+post:
+  # Archive or upload results if needed
+  - cat artillery_report.json
