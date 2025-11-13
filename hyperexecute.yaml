@@ -35,5 +35,5 @@ task:
     - cat artillery_report.json
 
 post:
-  artifacts:
-    - artillery_report.json
+  - artifacts:
+      - artillery_report.json
