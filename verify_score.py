@@ -1,7 +1,7 @@
 import json
 import sys
 
-SCORE_THRESHOLD = 85  # Required score for merge
+SCORE_THRESHOLD = 110  # Required score for merge
 
 try:
     with open("score_output.json", "r") as f:
