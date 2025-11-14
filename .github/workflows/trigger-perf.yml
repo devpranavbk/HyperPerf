@@ -13,9 +13,6 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Read URL from Repo A
-        run: echo "Vercel URL received: ${{ github.event.client_payload.vercel_url }}"
-
       - name: Run HyperExecute Test
         run: |
           hyperexecute execute \
