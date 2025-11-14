@@ -38,6 +38,7 @@ with sync_playwright() as p:
 
     page.on("request", log_request)
     page.goto(SITE_URL)
+    page.get_by_text("Visit Site").click()
     page.fill(USERNAME_SELECTOR, USERNAME)
     page.fill(PASSWORD_SELECTOR, PASSWORD)
     page.click(LOGIN_BUTTON_SELECTOR)
