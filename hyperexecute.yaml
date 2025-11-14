@@ -23,5 +23,9 @@ testSuites:
   - npx artillery run artillery.yml -o artillery_report.json
   - python simple_score_generator.py
 
-post:
-  - hyperexecute artifacts upload "*.html"
+mergeArtifacts: true
+
+uploadArtefacts:
+  - name: html-reports
+    path:
+      - ./*.html
