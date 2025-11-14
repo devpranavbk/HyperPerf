@@ -29,3 +29,6 @@ uploadArtefacts:
   - name: html-reports
     path:
       - ./*.html
+
+post:
+  - python verify_score.py

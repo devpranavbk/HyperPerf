@@ -113,6 +113,8 @@ def generate_report():
         # Ensure default structure for error reporting if score calculation fails
         score_results = {"regression": "N/A", "penalty": 0.0, "penalty_factor": PENALTY_FACTOR, "status_class": "poor"}
         final_score = 0.0 # Set score to 0 on critical error
+
+        return final_score
     
     
     # 4. Determine Merge Status (Kept for internal logic, but not displayed in HTML)
@@ -254,6 +256,11 @@ def generate_report():
         print(f"   Final PQI Score: {final_score:.2f}")
     else:
         print(f"   ❌ Execution Failed: {error_message}")
+    
+    return final_score   # ← REQUIRED
+
 
 if __name__ == "__main__":
-    generate_report()
+    final_score = generate_report()   # Capture returned score
+    with open("score_output.json", "w") as f:
+            json.dump({"pqi_score": final_score}, f)
