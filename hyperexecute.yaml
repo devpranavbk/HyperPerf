@@ -21,4 +21,7 @@ testSuites:
   - python extract_login_and_home_api_calls.py
   - python generate_artillery_yaml.py api_calls_login_and_home.json artillery.yml
   - npx artillery run artillery.yml -o artillery_report.json
-  - cat artillery_report.json
+  - python simple_score_generator.py
+
+post:
+  - hyperexecute artifacts upload "*.html"
