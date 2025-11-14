@@ -1,9 +1,6 @@
 version: 0.1
 runson: linux 
 
-env:
-  SITE_URL: ${{SITE_URL}}
-
 pre:
   - sudo apt-get update
   - sudo apt-get install -y python3 python3-pip curl
