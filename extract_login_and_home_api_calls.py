@@ -7,7 +7,7 @@ import os
 # SITE_URL = "https://demoapp-5owbzfpse-dev-pranavs-projects.vercel.app/"
 # USERNAME = "admin"
 # PASSWORD = "password"
-SITE_URL = os.getenv("SITE_URL", "https://neda-supernormal-domenica.ngrok-free.dev")
+SITE_URL = os.getenv("SITE_URL", "https://demoapp-ashen.vercel.app/")
 USERNAME = os.getenv("USERNAME", "admin")
 PASSWORD = os.getenv("PASSWORD", "password")
 
