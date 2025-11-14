@@ -6,7 +6,7 @@ import sys
 THRESHOLD = 110
 
 # Read score file
-score_file = "pqi_score.json"
+score_file = "score_output.json"
 with open(score_file, "r") as f:
     score_data = json.load(f)
 
