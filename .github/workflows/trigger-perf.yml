@@ -6,15 +6,17 @@ on:
       - perf_test_trigger
 
 jobs:
-  run-perf:
+  hyperexecute-v1:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Run HyperExecute Test
+      - name: Download HyperExecute CLI
         run: |
-          hyperexecute execute \
-            --config hyperexecute.yaml \
-            --param BASE_URL=${{ github.event.client_payload.vercel_url }}
+          curl -L https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute -o hyperexecute
+          chmod +x hyperexecute
+
+      - name: Run HyperExecute tests for v1
+        run: |
+          ./hyperexecute --user pranav.b --key LT_loIOEaM5ntMR5u5OI5mKvdVFO3sA7vy85ctQmPRGr5Tfdqx --config ./hyperexecute.yaml
