@@ -19,4 +19,5 @@ jobs:
 
       - name: Run HyperExecute tests for v1
         run: |
-          ./hyperexecute --user ${{ secrets.LT_USER_NAME }} --key ${{ secrets.LT_ACCESS_KEY }} --config ./hyperexecute.yaml --param SITE_URL=${{ github.event.client_payload.vercel_url }}
+          export SITE_URL=${{ github.event.client_payload.vercel_url }}
+          ./hyperexecute --user ${{ secrets.LT_USER_NAME }} --key ${{ secrets.LT_ACCESS_KEY }} --config ./hyperexecute.yaml
