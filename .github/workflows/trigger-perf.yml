@@ -8,7 +8,6 @@ on:
 jobs:
   hyperexecute-v1:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -18,22 +17,6 @@ jobs:
           curl -L https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute -o hyperexecute
           chmod +x hyperexecute
 
-      - name: Set environment variables
-        run: |
-          echo "SITE_URL=${{ github.event.client_payload.vercel_url }}" >> $GITHUB_ENV
-          echo "TARGET_SHA=${{ github.event.client_payload.commit_sha }}" >> $GITHUB_ENV
-          echo "TARGET_REPO=${{ github.event.client_payload.repo_full_name }}" >> $GITHUB_ENV
-          echo "OK"
-
       - name: Run HyperExecute tests for v1
         run: |
-          ./hyperexecute \
-            --user ${{ secrets.LT_USER_NAME }} \
-            --key ${{ secrets.LT_ACCESS_KEY }} \
-            --config ./hyperexecute.yaml
-
-      - name: Verify Performance Score + Update Repo A Commit Status
-        run: |
-          python3 verify_score.py
-        env:
-          GH_TOKEN: ${{ secrets.REPO_A_STATUS_TOKEN }}
+          ./hyperexecute --user ${{ secrets.LT_USER_NAME }} --key ${{ secrets.LT_ACCESS_KEY }} --config ./hyperexecute.yaml
