@@ -2,15 +2,19 @@ name: Run Perf Tests on Vercel Preview
 
 on:
   repository_dispatch:
-    types: [perf_test_trigger]
+    types:
+      - perf_test_trigger
 
 jobs:
   run-perf:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
       - name: Read URL from Repo A
-        run: echo "URL received: ${{ github.event.client_payload.vercel_url }}"
+        run: echo "Vercel URL received: ${{ github.event.client_payload.vercel_url }}"
 
       - name: Run HyperExecute Test
         run: |
