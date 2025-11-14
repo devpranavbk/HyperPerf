@@ -10,7 +10,7 @@ score_file = "score_output.json"
 with open(score_file, "r") as f:
     score_data = json.load(f)
 
-score = float(score_data["score"])
+score = float(score_data["pqi_score"])
 
 # env vars
 commit_sha = os.getenv("TARGET_SHA")
